@@ -16,6 +16,7 @@ public class Player_Controller : MonoBehaviour
     private float moveInput;
     Vector3 movement;
     [SerializeField] float speed;
+    private bool faceingright;
 
 
     // ---- JUMP Variables ----
@@ -36,13 +37,13 @@ public class Player_Controller : MonoBehaviour
 
     // ---- DASH Variables ----
 
-    [SerializeField] float dashForce, initialdashTime;
-    private float dashTime;
+    [SerializeField] float dashForce;
     private bool canDash;
 
-    //private bool facingRight = true; ----> Los usa la Funcion "Flip Sprite"; Pero no se esta usando en este momento.
+    // ---- SHOOT Variables ---
 
-
+    public float shootTime;
+    private float ShootTimeCounter;
 
     // ----------------------------------------------------------- CODE ---------------------------------------------------------------------
 
@@ -51,9 +52,7 @@ public class Player_Controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         extraJump = extraJumpsValue;
         canDash = true;
-        dashTime = initialdashTime;
-
-
+        ShootTimeCounter = shootTime;
     }
 
     // Update is called once per frame
@@ -68,7 +67,7 @@ public class Player_Controller : MonoBehaviour
             isJumping = true;
             jumpTimeCounter = jumpTime;
             rb.velocity = Vector2.up * jumpForce;
-            
+
         }
         else if (Input.GetButtonDown("Jump") && extraJump > 0) // Aqui se hace el doble salto.
         {
@@ -80,7 +79,7 @@ public class Player_Controller : MonoBehaviour
 
         if (Input.GetButton("Jump") && isJumping == true)
         {
-            
+
             if (jumpTimeCounter > 0)
             {
                 rb.velocity = Vector2.up * jumpForce;
@@ -112,7 +111,7 @@ public class Player_Controller : MonoBehaviour
         // ---- DASH Controller----
 
 
-        if (movement.x > 0 && Input.GetKeyDown(KeyCode.X))
+        if (!faceingright && Input.GetKeyDown(KeyCode.X))
         {
 
             if (canDash)
@@ -124,7 +123,7 @@ public class Player_Controller : MonoBehaviour
 
         }
 
-        if (movement.x < 0 && Input.GetKeyDown(KeyCode.X))
+        if (faceingright && Input.GetKeyDown(KeyCode.X))
         {
 
             if (canDash)
@@ -136,16 +135,39 @@ public class Player_Controller : MonoBehaviour
         }
 
 
-
-
         // ---- End DASH Controller ----
 
+        // ---- ANIMATION Controller ----  *P.S -> No todas las animaciones estan áca, algunas estan con sus respectivos controladores.
+
+        // -> Shooting
+
+        if (Input.GetKeyDown(KeyCode.Z) && moveInput == 0 )
+        {
+            animator.SetBool("shooting", true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Z) && moveInput != 0)
+        {
+            ShootTimeCounter = shootTime;
+            animator.SetBool("runShooting", true);
+        }
+
+        if (Input.GetKey(KeyCode.Z) && movement.x != 0)
+        {
+            animator.SetBool("shooting", false);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            animator.SetBool("shooting", false);
+            animator.SetBool("runShooting", false);
+
+        }
+
+        // ---- End Animation Controller ----
     }
 
     void FixedUpdate()
     {
-
-
         // -------------------------- Movement by Physics--------------------
         //moveInput = Input.GetAxis("Horizontal");
         //rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
@@ -166,7 +188,16 @@ public class Player_Controller : MonoBehaviour
         transform.position += movement * Time.deltaTime * speed;
         animator.SetFloat("speed", Math.Abs(moveInput));
 
-        flip();
+        if (movement.x < 0 && !faceingright )
+        {
+            flip();
+
+        }
+        else if (movement.x > 0 && faceingright)
+        {
+            flip();
+        }
+
 
     }
 
@@ -181,22 +212,24 @@ public class Player_Controller : MonoBehaviour
 
     void flip()
     {
+        faceingright = !faceingright;
 
-        if (movement.x < 0)
-        {
-            transform.localScale = new Vector2(-1, 1);
-        }
-        if (movement.x > 0)
-        {
-            transform.localScale = new Vector2(1, 1);
-        }
+        transform.Rotate(0f, 180f, 0f);
+
+        //if (movement.x < 0)
+        //{
+        //    transform.localScale = new Vector2(-1, 1);
+        //}
+        //if (movement.x > 0)
+        //{
+        //    transform.localScale = new Vector2(1, 1);
+        //}
 
     }
 
     void cooldownDash()
     {
         canDash = true;
-        dashTime = initialdashTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
