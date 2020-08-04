@@ -151,16 +151,28 @@ public class Player_Controller : MonoBehaviour
             animator.SetBool("runShooting", true);
         }
 
-        if (Input.GetKey(KeyCode.Z) && movement.x != 0)
-        {
-            animator.SetBool("shooting", false);
-        }
+        //if (Input.GetKey(KeyCode.Z) && movement.x != 0)
+        //{
+        //    animator.SetBool("shooting", false);
+        //}
 
         if (Input.GetKeyUp(KeyCode.Z))
         {
             animator.SetBool("shooting", false);
-            animator.SetBool("runShooting", false);
+        }
 
+        if (Math.Abs(moveInput) <= 0.01)
+        {
+            ShootTimeCounter = 0;
+        }
+
+        if (ShootTimeCounter <= 0)
+        {
+            animator.SetBool("runShooting", false);
+        }
+        else
+        {
+            ShootTimeCounter -= Time.deltaTime;
         }
 
         // ---- End Animation Controller ----
