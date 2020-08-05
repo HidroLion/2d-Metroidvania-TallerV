@@ -22,6 +22,9 @@ public class kaia_Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hit)
     {
-        Destroy(gameObject);
+        if (hit.gameObject.CompareTag("Enemie") || hit.gameObject.CompareTag("Ground") || hit.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

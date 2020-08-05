@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 1813867358002704132}
   - component: {fileID: 1813867358002704154}
   - component: {fileID: 1813867358002704134}
+  - component: {fileID: 5608916511116708597}
   m_Layer: 8
   m_Name: Crab
   m_TagString: Ground
@@ -300,3 +301,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5608916511116708597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813867358002704152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7280d6f2e8d31634aaed7a50574e9d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Explosion: {fileID: 7221107469755847323, guid: f8e6fbcc8303b1249b468510f1136006,
+    type: 3}
+  Me: {fileID: 1813867356693094631}
