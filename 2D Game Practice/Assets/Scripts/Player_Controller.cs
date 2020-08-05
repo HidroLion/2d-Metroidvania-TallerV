@@ -244,12 +244,6 @@ public class Player_Controller : MonoBehaviour
         canDash = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.tag == "Collectable")
-        {
-            Destroy(collider.gameObject);
-        }
-    }
+    
 
 }
