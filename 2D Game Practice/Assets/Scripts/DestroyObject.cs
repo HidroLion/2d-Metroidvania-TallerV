@@ -6,6 +6,7 @@ public class DestroyObject : MonoBehaviour
 {
     // Start is called before the first frame update
     public Animator anim;
+    public GameObject Object;
 
     void Awake()
     {
@@ -22,6 +23,6 @@ public class DestroyObject : MonoBehaviour
 
     public void DestroyOnTime()
     {
-        Destroy(gameObject);
+        Destroy(Object);
     }
 }

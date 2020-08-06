@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  Object: {fileID: 5348873183920723572}
 --- !u!1 &5348873184122396159
 GameObject:
   m_ObjectHideFlags: 0

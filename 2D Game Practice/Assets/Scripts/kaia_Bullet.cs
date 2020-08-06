@@ -7,7 +7,6 @@ public class kaia_Bullet : MonoBehaviour
     public float bulletSpeed;
     public Rigidbody2D bulletRb;
 
-
     // Start is called before the first frame update
     void Start()
     {
