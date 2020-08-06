@@ -15,7 +15,7 @@ public class CollectablesManager : MonoBehaviour
         {
             Destroy(collider.gameObject);
             coins += 1;
-            coinsText.text = coins.ToString();
+            //coinsText.text = coins.ToString();
         }
     }
 }
