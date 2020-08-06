@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Collectable
+  - Enemie
+  - Wall
+  - Bullet
   layers:
   - Default
   - TransparentFX
