@@ -5,15 +5,23 @@ using UnityEngine;
 public class DestroyObject : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject Explosion;
-    public float DelayTime;
+    public Animator anim;
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void OnTriggerEnter2D(Collider2D hit)
     {
         if (hit.gameObject.CompareTag("Bullet"))
         {
-            Instantiate(Explosion,transform);
-            Destroy(gameObject, DelayTime);
+            anim.SetBool("IsDeath", true);
         }
+    }
+
+    public void DestroyOnTime()
+    {
+        Destroy(gameObject);
     }
 }
