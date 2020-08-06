@@ -7,7 +7,6 @@ public class kaia_Bullet : MonoBehaviour
     public float bulletSpeed;
     public Rigidbody2D bulletRb;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +21,9 @@ public class kaia_Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hit)
     {
-        Destroy(gameObject);
+        if (hit.gameObject.CompareTag("Enemie") || hit.gameObject.CompareTag("Ground") || hit.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

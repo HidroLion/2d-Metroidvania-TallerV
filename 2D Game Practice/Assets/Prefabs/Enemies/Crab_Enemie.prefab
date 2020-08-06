@@ -48,7 +48,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4, y: 1.1020515}
+  m_Offset: {x: 4, y: 2.2835107}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -59,7 +59,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 16, y: 5.204103}
+  m_Size: {x: 16, y: 7.5670214}
   m_EdgeRadius: 0
 --- !u!114 &1813867356266808341
 MonoBehaviour:
@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 1813867358002704132}
   - component: {fileID: 1813867358002704154}
   - component: {fileID: 1813867358002704134}
+  - component: {fileID: 5608916511116708597}
   m_Layer: 8
   m_Name: Crab
   m_TagString: Ground
@@ -178,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813867358002704152}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.959999, y: -0.5300002, z: 156}
+  m_LocalPosition: {x: 7.959999, y: 0.65, z: 156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1813867356266808340}
@@ -266,18 +267,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.089505196, y: -0.009902954}
+  m_Offset: {x: -0.15774155, y: -0.15254116}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 2}
+    oldSize: {x: 6, y: 4}
     newSize: {x: 3, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1744442, y: 1.5221672}
+  m_Size: {x: 2.2077484, y: 2.8260288}
   m_EdgeRadius: 0
 --- !u!50 &1813867358002704134
 Rigidbody2D:
@@ -300,3 +301,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5608916511116708597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813867358002704152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7280d6f2e8d31634aaed7a50574e9d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  Object: {fileID: 1813867356693094631}
